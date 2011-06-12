@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Email Sender Example
+Bundle-SymbolicName: pl.edu.agh.osgi.email.sender
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: pl.edu.agh.osgi.email.sender.Activator
+Bundle-Vendor: AGH Krakow
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
