@@ -62,19 +62,30 @@ public class EmailSender extends Thread {
 	 * Manually acquire {@link ISpellChecker} service instance using
 	 * {@link ServiceReference}
 	 *
-	 * @return {@link ISpellChecker} instance or <code>null</code> if no spell
-	 *         checker is registered
+	 * @return {@link ISpellChecker} instance
 	 */
 	private ISpellChecker manuallyConsumeSpellCheckerService() {
 		ISpellChecker spellChecker = null;
 		while (spellChecker == null) {
+			// acquire service reference
 			ServiceReference ref = context.getServiceReference(ISpellChecker.class.getName());
+
+			// check if the service reference is not null, i.e. service is
+			// registered/exists in the OSGi Service Registry
 			if (ref != null) {
+
+				// get reference to the service object
 				spellChecker = (ISpellChecker) context.getService(ref);
+
+				// we need to check once more if the spellChecker is not null
+				// because the service can be registered between call of
+				// context.getServiceReference and context.getService
 				if (spellChecker != null) {
 					break;
 				}
 			}
+
+			// wait a while to check again if the service is available
 			System.out.println("Cannot find any spell checker");
 			threadSleep(1000);
 		}
