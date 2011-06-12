@@ -6,11 +6,11 @@
 <stringAttribute key="bootstrap" value=""/>
 <stringAttribute key="checked" value="[NONE]"/>
 <booleanAttribute key="clearConfig" value="false"/>
-<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/OSGi Dependent Bundles"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/OSGi Registering Service"/>
 <booleanAttribute key="default" value="true"/>
 <booleanAttribute key="default_auto_start" value="true"/>
 <intAttribute key="default_start_level" value="4"/>
-<stringAttribute key="deselected_workspace_plugins" value="pl.edu.agh.osgi.first-bundle"/>
+<stringAttribute key="deselected_workspace_plugins" value="pl.edu.agh.osgi.spell.checker.english,pl.edu.agh.osgi.email.sender,pl.edu.agh.osgi.services.email.sender,pl.edu.agh.osgi.first-bundle"/>
 <booleanAttribute key="includeOptional" value="false"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog -console"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
@@ -22,5 +22,5 @@
 <booleanAttribute key="tracing" value="false"/>
 <booleanAttribute key="useCustomFeatures" value="false"/>
 <booleanAttribute key="useDefaultConfigArea" value="true"/>
-<stringAttribute key="workspace_bundles" value="pl.edu.agh.osgi.services.spell.checker@default:default,pl.edu.agh.osgi.services.email.sender@default:default,pl.edu.agh.osgi.email.sender@default:default,pl.edu.agh.osgi.services.spell.checker.english@default:default,pl.edu.agh.osgi.spell.checker.english@default:default"/>
+<stringAttribute key="workspace_bundles" value="pl.edu.agh.osgi.services.spell.checker@default:default,pl.edu.agh.osgi.services.spell.checker.english@default:default"/>
 </launchConfiguration>

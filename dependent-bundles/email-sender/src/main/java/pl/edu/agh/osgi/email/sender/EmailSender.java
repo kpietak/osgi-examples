@@ -30,7 +30,7 @@ public class EmailSender extends Thread {
 					String res = spellChecker.checkIfCorrect(word) ? "OK"
 							: "WRONG";
 					System.out.println(String
-							.format("Word %s is %s", word, res));
+							.format("Word \"%s\" is %s", word, res));
 					// i'm exhausted - waiting a moment
 					try {
 						Thread.sleep(3000);
