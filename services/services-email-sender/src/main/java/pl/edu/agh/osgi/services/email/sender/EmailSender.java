@@ -14,11 +14,11 @@ import pl.edu.agh.osgi.services.spell.checker.ISpellChecker;
  */
 public class EmailSender extends Thread {
 
-	private static final String[] SAMPLE_MESSAGES = { "Hello OSGi world", "Let's start the show" };
+	protected static final String[] SAMPLE_MESSAGES = { "Hello OSGi world", "Let's start the show" };
 
-	private boolean active = true;
+	protected boolean active = true;
 
-	private BundleContext context;
+	protected BundleContext context;
 
 	public EmailSender(BundleContext context) {
 		if (context == null) {
@@ -29,7 +29,15 @@ public class EmailSender extends Thread {
 
 	@Override
 	public void run() {
-		for (String msg : SAMPLE_MESSAGES) {
+		translateMessages(SAMPLE_MESSAGES);
+	}
+
+	public void stopEmailSender() {
+		this.active = false;
+	}
+
+	protected void translateMessages(String[] msgs) {
+		for (String msg : msgs) {
 
 			System.out.println(String.format("Checking spelling of \"%s\"", msg));
 			String[] words = msg.split(" ");
@@ -38,7 +46,7 @@ public class EmailSender extends Thread {
 				if (active) {
 
 					// acquire spell checker
-					ISpellChecker spellChecker = manuallyConsumeSpellCheckerService();
+					ISpellChecker spellChecker = consumeSpellCheckerService();
 
 					// check spelling of particular words
 					String res = spellChecker.checkIfCorrect(word) ? "OK" : "WRONG";
@@ -54,17 +62,13 @@ public class EmailSender extends Thread {
 		}
 	}
 
-	public void stopEmailSender() {
-		this.active = false;
-	}
-
 	/**
 	 * Manually acquire {@link ISpellChecker} service instance using
 	 * {@link ServiceReference}
 	 *
 	 * @return {@link ISpellChecker} instance
 	 */
-	private ISpellChecker manuallyConsumeSpellCheckerService() {
+	protected ISpellChecker consumeSpellCheckerService() {
 		ISpellChecker spellChecker = null;
 		while (spellChecker == null) {
 			// acquire service reference
@@ -92,7 +96,7 @@ public class EmailSender extends Thread {
 		return spellChecker;
 	}
 
-	private void threadSleep(int milis) {
+	protected void threadSleep(int milis) {
 		try {
 			Thread.sleep(milis);
 		} catch (InterruptedException e) {

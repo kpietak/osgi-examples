@@ -21,6 +21,7 @@ public class Activator implements BundleActivator {
 		System.out.println("Starting Email Sender bundle");
 		Activator.context = bundleContext;
 		emailSenderThread = new EmailSender(context);
+		// emailSenderThread = new EmailSenderWithServiceTracker(context);
 		emailSenderThread.start();
 
 	}
